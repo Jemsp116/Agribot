@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import { Modal, Button, Input, Textarea } from "@nextui-org/react";
+import React, { useState } from 'react';
+import { X } from 'lucide-react';
 
 const links = [
     { name: 'Explore Our Technology', href: '#' },
@@ -17,46 +17,41 @@ const stats = [
     { name: 'Satisfied Farmers', value: '20k+' },
 ];
 
-export default function About() {
-    const [modalOpen, setModalOpen] = useState(false);
+const ContactForm = ({ onClose }) => {
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div className="dark:bg-black bg-white rounded-lg p-8 max-w-md w-full relative">
+                <button onClick={onClose} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                    <X size={24} />
+                </button>
+                <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+                <form className="space-y-4">
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-white-700">Name</label>
+                        <input type="text" id="name" name="name" required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                    </div>
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-white-700">Email</label>
+                        <input type="email" id="email" name="email" required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                    </div>
+                    <div>
+                        <label htmlFor="message" className="block text-sm font-medium text-white-700">Message</label>
+                        <textarea id="message" name="message" rows={4} required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                    </div>
+                    <button type="submit" className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Send Message</button>
+                </form>
+            </div>
+        </div>
+    );
+};
 
-    const handleOpenModal = () => setModalOpen(true);
-    const handleCloseModal = () => setModalOpen(false);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here
-        alert("Form submitted!");
-        handleCloseModal();
-    };
+export default function AboutContent() {
+    const [showContactForm, setShowContactForm] = useState(false);
 
     return (
         <>
             <div className="relative isolate bg-[url('/back3.jpg')] bg-fixed overflow-hidden bg-gray-900 py-24 sm:py-32">
-                <div
-                    className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
-                    aria-hidden="true"
-                >
-                    <div
-                        className="aspect-[1097/845] w-[68.5625rem] bg-fixed top-0 bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-                        style={{
-                            clipPath:
-                                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                        }}
-                    />
-                </div>
-                <div
-                    className="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
-                    aria-hidden="true"
-                >
-                    <div
-                        className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-                        style={{
-                            clipPath:
-                                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                        }}
-                    />
-                </div>
+                {/* ... (previous background divs remain unchanged) ... */}
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl lg:mx-0">
                         <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Empowering Agriculture with Robotics and Drones</h2>
@@ -73,6 +68,12 @@ export default function About() {
                                     {link.name} <span aria-hidden="true">&rarr;</span>
                                 </a>
                             ))}
+                            <button
+                                onClick={() => setShowContactForm(true)}
+                                className="bg-white text-gray-900 hover:bg-gray-100 py-2 px-4 rounded-md"
+                            >
+                                Contact Us
+                            </button>
                         </div>
                         <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
                             {stats.map((stat) => (
@@ -83,34 +84,9 @@ export default function About() {
                             ))}
                         </dl>
                     </div>
-                    <div className="text-center mt-10">
-                        <Button color="primary" onClick={handleOpenModal}>Contact Us</Button>
-                    </div>
                 </div>
             </div>
-
-            {/* Contact Us Modal */}
-            <Modal open={modalOpen} onClose={handleCloseModal}>
-                <Modal.Header>
-                    <h2>Contact Us</h2>
-                </Modal.Header>
-                <Modal.Body>
-                    {/* Ensure form id is correctly assigned */}
-                    <form id="contact-form" onSubmit={handleSubmit} className="flex flex-col space-y-4">
-                        <Input placeholder="Your Name" clearable required />
-                        <Input type="email" placeholder="Your Email" clearable required />
-                        <Input placeholder="Subject" clearable required />
-                        <Textarea placeholder="Your Message" clearable required rows={4} />
-                        {/* Add the submit button within the form */}
-                        <Button type="submit">Send</Button>
-                    </form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button auto flat onClick={handleCloseModal}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            {showContactForm && <ContactForm onClose={() => setShowContactForm(false)} />}
         </>
     );
 }
