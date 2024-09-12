@@ -7,12 +7,8 @@ export const siteConfig = {
       href: "/home",
     },
     {
-      label: "Recyclers",
+      label: "Rent Robot",
       href: "/recyclers",
-    },
-    {
-      label: "Collaborators",
-      href: "/collaborators",
     },
     {
       label: "About Us",
@@ -27,10 +23,6 @@ export const siteConfig = {
       {
         label: "Records",
         href: "/Records",
-      },
-      {
-        label: "Collaborators",
-        href: "/collaborators",
       },
       {
         label: "About Us",
