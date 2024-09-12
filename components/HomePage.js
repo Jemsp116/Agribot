@@ -3,19 +3,17 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardFooter, Image, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@nextui-org/react";
 import DivWrapper from "./DivWrapper";
-import Chips from './Chips';
-import { SSG_FALLBACK_EXPORT_ERROR } from "next/dist/lib/constants";
 import { useRouter } from 'next/navigation';
 
 // Feature Card Component
 const FeatureCard = ({ title, description, icon }) => {
   return (
     <motion.div
-      className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
+      className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-green-500"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      <div className="text-4xl mb-4 text-violet-600 dark:text-violet-400">{icon}</div>
+      <div className="text-4xl mb-4 text-green-600 dark:text-green-400">{icon}</div>
       <h3 className="text-xl font-semibold mb-2 text-black dark:text-white">{title}</h3>
       <p className="text-gray-600 dark:text-gray-300">{description}</p>
     </motion.div>
@@ -30,7 +28,7 @@ const StatItem = ({ value, label }) => (
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
   >
-    <div className="text-4xl font-bold text-violet-600 dark:text-violet-400">{value}</div>
+    <div className="text-4xl font-bold text-green-600 dark:text-green-400">{value}</div>
     <div className="text-gray-600 dark:text-gray-300">{label}</div>
   </motion.div>
 );
@@ -38,18 +36,18 @@ const StatItem = ({ value, label }) => (
 // CTA Component
 const CTA = () => {
   const router = useRouter();
-  return(
+  return (
     <motion.div
-      className="bg-gradient-to-r from-violet-600 to-pink-500 p-12 rounded-lg text-white text-center"
+      className="bg-gradient-to-r from-green-600 to-yellow-500 p-12 rounded-lg text-white text-center"
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <h2 className="text-3xl font-bold mb-4">Ready to Start Recycling?</h2>
-      <p className="mb-6">Join our platform and make a difference today!</p>
+      <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Farm?</h2>
+      <p className="mb-6">Join Agribot and revolutionize your farming experience with our advanced robotics and drone technology!</p>
       <motion.button
         onClick={() => router.push('/register')}
-        className="bg-white text-violet-600 px-6 py-2 rounded-full font-semibold"
+        className="bg-white text-green-600 px-6 py-2 rounded-full font-semibold"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
@@ -87,28 +85,28 @@ const CardModal = ({ isOpen, onClose, card }) => {
 
 const cardData = [
   {
-    "title": "Easy E-Waste Recycling",
-    "description": "Dispose of electronics responsibly with our eco-friendly recycling platform.",
+    "title": "Efficient Farming",
+    "description": "Optimize your farming practices with our advanced robotics.",
     "imgUrl": "/card_img_03.jpg",
-    "additionalInfo": "Our platform simplifies the process of recycling electronic waste. We provide convenient drop-off locations and pickup services to ensure that your old electronics are disposed of properly, minimizing environmental impact."
+    "additionalInfo": "Our robotics solutions help automate various farming tasks, improving efficiency and reducing manual labor. Experience smarter farming with our state-of-the-art technology."
   },
   {
-    "title": "Recycling Partners",
-    "description": "Partnering with certified recyclers ensures safe, compliant e-waste recycling.",
+    "title": "Precision Agriculture",
+    "description": "Use drones and robots for accurate and efficient farming.",
     "imgUrl": "/card_img_02.jpg",
-    "additionalInfo": "We collaborate with a network of certified recycling partners who adhere to strict environmental and safety standards. This ensures that all e-waste is processed in compliance with regulations, protecting both the environment and data security."
+    "additionalInfo": "Leverage our drones and robots for precise planting, monitoring, and harvesting. Our technology ensures optimal crop growth and resource usage, boosting your farm's productivity."
   },
   {
-    "title": "Environmental Impact",
-    "description": "Reduce landfill waste and carbon footprint with every recycled item.",
+    "title": "Sustainable Practices",
+    "description": "Implement eco-friendly and sustainable farming solutions.",
     "imgUrl": "/card_img_05.jpg",
-    "additionalInfo": "By choosing to recycle your e-waste through our platform, you're making a significant positive impact on the environment. We track and report on the amount of waste diverted from landfills and the reduction in carbon emissions achieved through our recycling efforts."
+    "additionalInfo": "Our solutions are designed to minimize environmental impact while maximizing farm output. We focus on sustainable practices that promote a healthier planet and more productive farming."
   },
   {
-    "title": "Expert Support",
-    "description": "Our experts provide personalized support for recycling and purchases.",
+    "title": "Expert Guidance",
+    "description": "Receive support from our experts to enhance your farming operations.",
     "imgUrl": "/card_img_04.jpg",
-    "additionalInfo": "Our team of recycling experts is available to provide guidance on proper e-waste disposal, answer your questions, and offer personalized recommendations. We're committed to making your recycling experience as smooth and informed as possible."
+    "additionalInfo": "Our team of experts provides personalized guidance on using our robotics and drone technology. Get the support you need to integrate our solutions into your farming practices."
   }
 ];
 
@@ -123,33 +121,32 @@ const FrontPage = () => {
 
   return (
     <>
-      {/* ... (previous sections remain unchanged) ... */}
       {/* What We Offer Section */}
-      <section className="py-20 px-4 dark:bg-black bg-white text-white">
-        <div className="container mx-auto flex flex-col  gap-1 justify-center items-center">
-          <h2 className="text-3xl font-bold text-center mb-12 dark:text-white text-black">Our Features</h2>
+      <section className="py-20 px-4 dark:bg-gray-900 bg-white text-white">
+        <div className="container mx-auto flex flex-col gap-1 justify-center items-center">
+          <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">Our Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
-              title="Easy Connection"
-              description="Connect with recyclers and clients effortlessly."
-              icon="🔗"
+              title="Advanced Robotics"
+              description="Integrate cutting-edge robotics into your farm."
+              icon="🤖"
             />
             <FeatureCard
-              title="Secure Transactions"
-              description="Safe and transparent e-waste management process."
-              icon="🔒"
+              title="Drone Technology"
+              description="Utilize drones for precise and efficient farming."
+              icon="🚁"
             />
             <FeatureCard
-              title="Environmental Impact"
-              description="Track and reduce your carbon footprint."
-              icon="🌿"
+              title="Eco-Friendly Solutions"
+              description="Adopt sustainable practices for a greener farm."
+              icon="🌍"
             />
           </div>
         </div>
       </section>
 
       {/* Our Cards Section */}
-      <DivWrapper title={'Our Cards'}>
+      <DivWrapper title={'Our Solutions'}>
         <div className="flex flex-nowrap justify-center gap-4 overflow-x-auto pb-4">
           {cardData.map((card, index) => (
             <Card
@@ -197,20 +194,19 @@ const FrontPage = () => {
         )}
       </AnimatePresence>
 
-      {/* ... (remaining sections stay the same) ... */}
       {/* Making a Difference Section */}
       <section className="py-20 px-4 bg-white dark:bg-gray-900">
-        <div className="container mx-auto flex flex-col  gap-1 justify-center items-center">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">Making a Difference</h2>
+        <div className="container mx-auto flex flex-col gap-1 justify-center items-center">
+          <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">Making an Impact</h2>
           <div className="flex flex-wrap justify-center gap-12">
-            <StatItem value="10,000+" label="Users" />
-            <StatItem value="5,000+" label="Tons Recycled" />
-            <StatItem value="500+" label="Partners" />
+            <StatItem value="1,000+" label="Farms Served" />
+            <StatItem value="2,000+" label="Robots Deployed" />
+            <StatItem value="300+" label="Drones in Action" />
           </div>
         </div>
       </section>
 
-      {/* Ready to Start Recycling Section */}
+      {/* Ready to Transform Section */}
       <section className="py-20 px-4 bg-gray-100 dark:bg-gray-900">
         <div className="container mx-auto max-w-4xl">
           <CTA />

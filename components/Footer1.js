@@ -29,11 +29,11 @@ const Footer1 = () => {
                   <p
                     className={`text-2xl font-semibold dark:text-zinc-200 text-zinc-900`}
                   >
-                    E-WasteMart
+                    AgriBot
                   </p>
                 </div>
                 <p className={`${listStyles} text-wrap w-full leading-6`}>
-                  We are providing platform for high authorities to check on the criminal records of a person.{" "}
+                Transforming farming with innovative robotics and drones. Contact us to learn more about our solutions.{" "}
                 </p>{" "}
               </div>
               <div className=" flex flex-col gap-3 md:gap-6">
@@ -41,7 +41,7 @@ const Footer1 = () => {
                 <ul className="flex flex-col gap-2">
                   <li className={listStyles}>
                     {" "}
-                    <ListComponent href={'#'} btnText="Track Records" />
+                    <ListComponent href={'#'} btnText="Rent Robot" />
                   </li>
                   <li className={listStyles}>
                     <ListComponent href={'#'} btnText="Easy Access" />
@@ -93,7 +93,7 @@ const Footer1 = () => {
                 <p
                   className={` dark:text-zinc-200 text-zinc-800 text-sm font-base`}
                 >
-                  <ListComponent href={'#'} btnText="e-wastemart.123@gmail.com" />
+                  <ListComponent href={'#'} btnText="info@agribot.com" />
                 </p>
                 <ul
                   className={`flex gap-3 dark:text-zinc-200 text-zinc-950`}
@@ -162,7 +162,7 @@ const Footer1 = () => {
               className={`flex flex-col gap-4 w-full text-sm md:text-base md:flex-row md:justify-between dark:text-zinc-100 text-zinc-700`}
             >
               <p className={`font-light `}>
-              Copyright © 2024 E-Waste Mart All Rights Reserved.
+              Copyright © 2024 AgriBot All Rights Reserved.
               </p>
               <ul className="w-full flex justify-between md:w-fit gap-9">
                 <li className="">Terms & Conditions </li>

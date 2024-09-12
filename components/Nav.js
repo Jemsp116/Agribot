@@ -32,7 +32,7 @@ export default function Nav() {
             className="h-8 w-8 mr-4"
             alt="logo"
           />
-          <p className="font-bold text-inherit">E-WasteMart</p>
+          <p className="font-bold text-inherit">AgriBot</p>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">

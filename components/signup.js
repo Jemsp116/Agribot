@@ -99,7 +99,7 @@ const SignUpForm = () => {
           >
             <option value="">Select an option</option>
             <option value="option1">User</option>
-            <option value="recyclers">Recyclers</option>
+            <option value="Rent Robot">Rent Robot</option>
             <option value="scrappers">Scrappers</option>
           </select>
           {errors.select && <p className='text-red-500'>{errors.select.message}</p>}

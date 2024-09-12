@@ -8,7 +8,7 @@ export const siteConfig = {
     },
     {
       label: "Rent Robot",
-      href: "/recyclers",
+      href: "/RentRobot",
     },
     {
       label: "About Us",

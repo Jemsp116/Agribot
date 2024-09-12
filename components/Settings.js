@@ -208,7 +208,7 @@ const SettingsPane = ({ type }) => {
               </div>
               <div>
                 <h4 className="font-medium mb-2">How does E-WasteMart work?</h4>
-                <p>E-WasteMart connects individuals and businesses with certified e-waste recyclers. Users can schedule pickups for their e-waste, which is then collected and processed by our network of recyclers. We ensure that all e-waste is handled in an environmentally responsible manner, maximizing recycling and proper disposal.</p>
+                <p>E-WasteMart connects individuals and businesses with certified e-waste Rent Robot. Users can schedule pickups for their e-waste, which is then collected and processed by our network of Rent Robot. We ensure that all e-waste is handled in an environmentally responsible manner, maximizing recycling and proper disposal.</p>
               </div>
               <div>
                 <h4 className="font-medium mb-2">What types of e-waste does E-WasteMart accept?</h4>

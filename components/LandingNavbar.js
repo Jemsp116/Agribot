@@ -24,7 +24,7 @@ export default function LandingNavbar() {
                             className="h-8 w-8 mr-4"
                             alt="logo"
                         />
-                        <p className="font-bold text-inherit">E-WasteMart</p>
+                        <p className="font-bold text-inherit">AgriBot</p>
                     </Link>
                 </NavbarBrand>
             </NavbarContent>
