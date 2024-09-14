@@ -69,13 +69,13 @@ export default function Nav() {
                   <Link
                     key={index} 
                     href ={item.href}
-                    className="block px-4 py-2 dark:text-white text-gray-800 dark:hover:bg-primary hover:bg-gray-100 cursor-pointer"
+                    className="block px-4 py-2 dark:text-white text-gray-800 dark:hover:bg-green-500 hover:bg-gray-200 cursor-pointer"
                   >
                     {item.label}
                   </Link>
                 ))}
                 <button 
-                  className="px-4 py-2 mx-4 rounded-md text-white bg-primary cursor-pointer"
+                  className="px-4 py-2 mx-3 mt-3 rounded-md text-white bg-green-500 cursor-pointer"
                   onClick={() => signOut()}
                 >
                   Logout
@@ -96,7 +96,7 @@ export default function Nav() {
               color={
                 (index === 2) ? "primary" : (index === siteConfig.navMenuItems.length - 1) ? "primary" : "foreground"
               }
-              className={`w-full ${(pathname === item.href) ? "text-primary font-semibold" : ""}`}
+              className={`w-full ${(pathname === item.href) ? "bg-green-500 font-semibold" : ""}`}
               href={item.href}
               size="lg"
             >
