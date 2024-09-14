@@ -122,7 +122,7 @@ const FrontPage = () => {
   return (
     <>
       {/* What We Offer Section */}
-      <section className="py-20 px-4 dark:bg-gray-900 bg-white text-white">
+      {/* <section className="py-20 px-4 dark:bg-gray-900 bg-white text-white">
         <div className="container mx-auto flex flex-col gap-1 justify-center items-center">
           <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">Our Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -143,7 +143,7 @@ const FrontPage = () => {
             />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Our Cards Section */}
       <DivWrapper title={'Our Solutions'}>
