@@ -23,11 +23,10 @@ const RentRobot = () => {
 
   const robotsAndDrones = [
     {
-      name: "AgriBot X1",
+      name: "X100",
       type: "Robot",
-      description:
-        "The AgriBot X1 excels in automated planting with high precision.",
-      image: "https://example.com/agri-bot-x1.png",
+      description: "A Multi-purpose Agricultural Robot",
+      image: "/r1_outer.jpg",
       features: "Equipped with advanced sensors and AI for optimized planting.",
       pricePoint: "Competitive pricing based on customization and usage.",
       rentPrice: "Rent for $500 per day",
@@ -39,7 +38,7 @@ const RentRobot = () => {
       type: "Drone",
       description:
         "The DroneTech Y2 offers high-resolution aerial imaging for crop monitoring.",
-      image: "https://example.com/drone-tech-y2.png",
+      image: "/r1_outer.jpg",
       features:
         "Features real-time imaging and GPS tracking for accurate field surveys.",
       pricePoint: "Rates vary based on flight duration and data requirements.",
@@ -52,7 +51,7 @@ const RentRobot = () => {
       type: "Robot",
       description:
         "AgriBot Z3 provides efficient harvesting with minimal human intervention.",
-      image: "https://example.com/agri-bot-z3.png",
+      image: "/r1_outer.jpg",
       features:
         "Utilizes robotics and AI to ensure high yield and quality harvest.",
       pricePoint:
@@ -66,7 +65,7 @@ const RentRobot = () => {
       type: "Drone",
       description:
         "SkyScan Drone 500 delivers comprehensive crop health analysis through drone technology.",
-      image: "https://example.com/sky-scan-drone-500.png",
+      image: "/r1_outer.jpg",
       features:
         "Advanced sensors for detecting crop health issues and data analytics.",
       pricePoint:
@@ -80,7 +79,7 @@ const RentRobot = () => {
       type: "Robot",
       description:
         "AgriBot Y4 assists in soil preparation with precision and efficiency.",
-      image: "https://example.com/agri-bot-y4.png",
+      image: "/r1_outer.jpg",
       features:
         "Features automated soil tilling and nutrient analysis for improved soil health.",
       pricePoint:
@@ -94,7 +93,7 @@ const RentRobot = () => {
       type: "Drone",
       description:
         "AeroFarm Drone 1000 provides advanced mapping and field management capabilities.",
-      image: "https://example.com/aero-farm-drone-1000.png",
+      image: "/r1_outer.jpg",
       features:
         "High-resolution cameras and GPS for detailed field mapping and analysis.",
       pricePoint: "Cost varies with the level of detail and frequency of use.",
@@ -123,7 +122,7 @@ const RentRobot = () => {
             >
               <a href="#">
                 <img
-                  className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                  className="rounded-lg sm:rounded-none sm:rounded-l-lg"
                   src={item.image}
                   alt={`${item.name} Image`}
                 />
@@ -144,80 +143,91 @@ const RentRobot = () => {
                       <Button onPress={() => handleOpen()}>Learn More</Button>
                     </div>
                     <Modal size={"4xl"} isOpen={isOpen} onClose={onClose}>
-  <ModalContent>
-    {(onClose) => {
-      const images = [
-        "/card_img_04.jpg",
-        "/card_img_02.jpg",
-        "/card_img_03.jpg",
-      ];
+                      <ModalContent>
+                        {(onClose) => {
+                          const images = [
+                            "/r_img_1.jpg",
+                            "/r_img_2.jpg",
+                            "/r_img_3.jpg",
+                            "/r_img_4.png",
+                          ];
 
-      return (
-        <>
-          <ModalHeader className="flex flex-col gap-1 text-2xl">
-            Modal Title
-          </ModalHeader>
-          <ModalBody className="overflow-y-auto" style={{ maxHeight: '500px' }}>
-            <div>
-              {/* Display all images in a row */}
-              <RobotImage images={images} />
+                          return (
+                            <>
+                              <ModalHeader className="flex flex-col gap-1 text-2xl">
+                                X100
+                              </ModalHeader>
+                              <ModalBody
+                                className="overflow-y-auto"
+                                style={{ maxHeight: "500px" }}
+                              > 
+                                <div>
+                                  {/* Display all images in a row */}
+                                  <RobotImage images={images} />
 
-              {/* Fixed Information */}
-              <div className="mt-4 flex flex-col gap-3">
-                <p className="text-sm font-semibold text-justify">
-                  All Images Displayed in a Row: The images array is mapped over,
-                  and each image is rendered simultaneously inside a div with flex
-                  to align them horizontally. The space-x-4 class adds space between
-                  the images for better visual separation. Removed Buttons for Image
-                  Navigation: The buttons to navigate between images nextImage and
-                  prevImage were removed, as the goal is to display all the images at
-                  once. All Images Displayed in a Row: The images array is mapped
-                  over, and each image is rendered simultaneously inside a div with
-                  flex to align them horizontally. The space-x-4 class adds space
-                  between the images for better visual separation. Remove is to
-                  display all the images at once.
-                </p>
-                
-                <h1 className="font-semibold">Key Feature: </h1>
-                <ul className="list-disc text-sm font-semibold text-justify ml-4">
-                  <li>All Images Displayed in a Row: The images array is mapped
-                  over, and eacneouslbetter visual separation. Remove is to
-                  display all the images at once.</li>
-                  <li>All Images Displayed in a Row: The images array is mapped
-                  over, and eacneouslbetter visual separation. Remove is to
-                  display all the images at once.</li>
-                  <li>All Images Displayed in a Row: The images array is mapped
-                  over, and eacneouslbetter visual separation. Remove is to
-                  display all the images at once.</li>
-                </ul>
-                <h1 className="font-semibold">Price: 900000</h1>
-              </div>
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              color="danger"
-              variant="light"
-              onPress={onClose}
-            >
-              Close
-            </Button>
-            <Button color="primary" onPress={onClose}>
-              Action
-            </Button>
-          </ModalFooter>
-        </>
-      );
-    }}
-  </ModalContent>
-</Modal>
+                                  {/* Fixed Information */}
+                                  <div className="mt-4 flex flex-col gap-3">
+                                    <p className="text-sm font-semibold text-justify">
+                                      The X100 Weeding Robot is an advanced
+                                      autonomous machine designed for precision
+                                      weeding in large fields. Using AI and
+                                      computer vision, it identifies and removes
+                                      weeds with high accuracy, reducing the
+                                      need for herbicides and manual labor.
+                                    </p>
 
+                                    <h1 className="font-semibold">Specs: </h1>
+                                    <ul className="list-disc text-sm font-semibold text-justify ml-4">
+                                      <li>
+                                        Autonomous Operation: Fully automated,
+                                        requiring minimal human intervention.
+                                      </li>
+                                      <li>
+                                        AI-Powered Vision: Identifies and
+                                        targets weeds with high precision.
+                                      </li>
+                                      <li>
+                                        Chemical-Free Weeding: Removes weeds
+                                        without the need for herbicides.
+                                      </li>
+                                      <li>
+                                        GPS Navigation: Ensures precise field
+                                        coverage with minimal overlap.
+                                      </li>
+                                      <li>
+                                        Energy Efficient: Designed to operate on
+                                        low energy consumption
+                                      </li>
+                                    </ul>
+                                    <h1 className="font-semibold">
+                                      Price per hour: 200 INR
+                                    </h1>
+                                  </div>
+                                </div>
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button
+                                  color="danger"
+                                  variant="light"
+                                  onPress={onClose}
+                                >
+                                  Close
+                                </Button>
+                                <Button color="primary" onPress={onClose}>
+                                  Action
+                                </Button>
+                              </ModalFooter>
+                            </>
+                          );
+                        }}
+                      </ModalContent>
+                    </Modal>
                   </>
                   <Payment
                     existingName={"KANISHK"}
                     existingEmail={"kanishkchaudhary2005@gmail.com"}
                     existingAmount={200}
-                    btnText={"Rent a Robot"}
+                    btnText={"Rent"}
                   />
                 </div>
               </div>
