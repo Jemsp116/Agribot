@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useState } from "react";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea } from "@nextui-org/react";
+import React, { useState } from 'react';
+import { X } from 'lucide-react';
 
 const links = [
     { name: 'Explore Our Technology', href: '#' },
@@ -17,35 +17,40 @@ const stats = [
     { name: 'Satisfied Farmers', value: '20k+' },
 ];
 
-export default function About() {
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+const ContactForm = ({ onClose }) => {
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div className="dark:bg-black bg-white rounded-lg p-8 max-w-md w-full relative">
+                <button onClick={onClose} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                    <X size={24} />
+                </button>
+                <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+                <form className="space-y-4">
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-white-700">Name</label>
+                        <input type="text" id="name" name="name" required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                    </div>
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-white-700">Email</label>
+                        <input type="email" id="email" name="email" required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                    </div>
+                    <div>
+                        <label htmlFor="message" className="block text-sm font-medium text-white-700">Message</label>
+                        <textarea id="message" name="message" rows={4} required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                    </div>
+                    <button type="submit" className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Send Message</button>
+                </form>
+            </div>
+        </div>
+    );
+};
 
-    const [loading, setLoading] = useState(false);
-    const [form, setForm] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: '',
-    });
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        console.log(form);
-        await axios.post(`https://wcb-server.vercel.app/contactUs/create`, form);
-        setForm({
-            firstName: '',
-            lastName: '',
-            email: '',
-            message: '',
-        });
-
-        setLoading(false);
-    }
+export default function AboutContent() {
+    const [showContactForm, setShowContactForm] = useState(false);
 
     return (
         <>
-            <div className="relative isolate bg-[url('/back3.jpg')] bg-fixed overflow-hidden bg-cover bg-gray-900 py-24 sm:py-32">
+            <div className="relative isolate bg-[url('/back3.jpg')] bg-fixed overflow-hidden bg-gray-900 py-24 sm:py-32">
                 {/* ... (previous background divs remain unchanged) ... */}
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl lg:mx-0">
@@ -79,45 +84,9 @@ export default function About() {
                             ))}
                         </dl>
                     </div>
-
                 </div>
             </div>
-
-            <Button onPress={onOpen}>Contact Us</Button>
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-                <ModalContent>
-                    {(onClose) => (
-                        <>
-                            <ModalHeader className="flex flex-col gap-1">Contact Us</ModalHeader>
-                            <ModalBody>
-                                <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
-                                    <div className='flex flex-col md:flex-row gap-3'>
-                                        <div className='flex flex-col'>
-                                            <label htmlFor="name">First Name</label>
-                                            <input type="text" value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} id='name' name='name' className='md:w-[194px]' />
-                                        </div>
-                                        <div className='flex flex-col gap'>
-                                            <label htmlFor="name">Last Name</label>
-                                            <input type="text" value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} id='name' name='name' className='md:w-[194px]' />
-                                        </div>
-                                    </div>
-                                    <div className='flex flex-col'>
-                                        <label htmlFor="email">Email</label>
-                                        <input type="email" id='email' value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} name='email' className='md:w-[400px]' />
-                                    </div>
-                                    <div className='flex flex-col'>
-                                        <label htmlFor="message">Wtire to Us</label>
-                                        <textarea id='message' value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} name='message' className='md:w-[400px] h-[125px]' />
-                                    </div>
-                                    <Button variant='solid' isLoading={loading} color='primary' type='submit' className='font-semibold w-32 mx-auto'>Submit</Button>
-                                </form>
-                            </ModalBody>
-                        </>
-                    )}
-                </ModalContent>
-            </Modal>
+            {showContactForm && <ContactForm onClose={() => setShowContactForm(false)} />}
         </>
     );
 }
-
-
