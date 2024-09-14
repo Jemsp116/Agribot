@@ -13,14 +13,19 @@
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "framer-motion": "^11.5.4",
+    "lucide-react": "^0.441.0",
     "mongodb": "^6.8.1",
     "mongoose": "^8.6.2",
     "next": "14.2.10",
     "next-auth": "^4.24.7",
     "next-themes": "^0.3.0",
+    "razorpay": "^2.9.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.53.0"
+    "react-hook-form": "^7.53.0",
+    "react-sortablejs": "^6.1.4",
+    "react-spinners": "^0.14.1",
+    "recharts": "^2.12.7"
   },
   "devDependencies": {
     "eslint": "^8",

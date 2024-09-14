@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { useState } from 'react';
 
 
-export default function Payment({existingName, existingEmail, existingAmount}) {
+export default function Payment({existingName, existingEmail, existingAmount, btnText}) {
     const [name, setName] = useState(existingName || '');
     const [email, setEmail] = useState(existingEmail || '');
     const [amount, setAmount] = useState(existingAmount || '');
@@ -98,7 +98,7 @@ export default function Payment({existingName, existingEmail, existingAmount}) {
            className="flex flex-col"
            onSubmit={processPayment}
           >
-           <button className='bg-primary py-2 px-4 font-semibold text-white rounded-md' type='submit'>Donate Us</button>
+           <button className='bg-green-500 hover:bg-green-700 py-2 px-4 font-semibold text-white rounded-md' type='submit'>{btnText}</button>
           </form>
          </section>
         </>

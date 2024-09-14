@@ -1,4 +1,3 @@
-import Chatbot from '@/components/ChatBox'
 import Footer1 from '@/components/Footer1'
 import Nav from '@/components/Nav'
 import React from 'react'
@@ -8,7 +7,6 @@ const Template = ({ children }) => {
     <div>
       <Nav />
       {children}
-      <Chatbot />
       <Footer1 />
     </div>
   )

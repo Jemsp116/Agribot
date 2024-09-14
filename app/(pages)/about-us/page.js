@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Modal, Button, Input, Textarea } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea } from "@nextui-org/react";
 
 const links = [
     { name: 'Explore Our Technology', href: '#' },
@@ -18,17 +18,30 @@ const stats = [
 ];
 
 export default function About() {
-    const [modalOpen, setModalOpen] = useState(false);
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-    const handleOpenModal = () => setModalOpen(true);
-    const handleCloseModal = () => setModalOpen(false);
+    const [loading, setLoading] = useState(false);
+    const [form, setForm] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: '',
+    });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission logic here
-        alert("Form submitted!");
-        handleCloseModal();
-    };
+        setLoading(true);
+        console.log(form);
+        await axios.post(`https://wcb-server.vercel.app/contactUs/create`, form);
+        setForm({
+            firstName: '',
+            lastName: '',
+            email: '',
+            message: '',
+        });
+
+        setLoading(false);
+    }
 
     return (
         <>
@@ -83,34 +96,45 @@ export default function About() {
                             ))}
                         </dl>
                     </div>
-                    <div className="text-center mt-10">
-                        <Button color="primary" onClick={handleOpenModal}>Contact Us</Button>
-                    </div>
+
                 </div>
             </div>
 
-            {/* Contact Us Modal */}
-            <Modal open={modalOpen} onClose={handleCloseModal}>
-                <Modal.Header>
-                    <h2>Contact Us</h2>
-                </Modal.Header>
-                <Modal.Body>
-                    {/* Ensure form id is correctly assigned */}
-                    <form id="contact-form" onSubmit={handleSubmit} className="flex flex-col space-y-4">
-                        <Input placeholder="Your Name" clearable required />
-                        <Input type="email" placeholder="Your Email" clearable required />
-                        <Input placeholder="Subject" clearable required />
-                        <Textarea placeholder="Your Message" clearable required rows={4} />
-                        {/* Add the submit button within the form */}
-                        <Button type="submit">Send</Button>
-                    </form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button auto flat onClick={handleCloseModal}>
-                        Close
-                    </Button>
-                </Modal.Footer>
+            <Button onPress={onOpen}>Contact Us</Button>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                <ModalContent>
+                    {(onClose) => (
+                        <>
+                            <ModalHeader className="flex flex-col gap-1">Contact Us</ModalHeader>
+                            <ModalBody>
+                                <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
+                                    <div className='flex flex-col md:flex-row gap-3'>
+                                        <div className='flex flex-col'>
+                                            <label htmlFor="name">First Name</label>
+                                            <input type="text" value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} id='name' name='name' className='md:w-[194px]' />
+                                        </div>
+                                        <div className='flex flex-col gap'>
+                                            <label htmlFor="name">Last Name</label>
+                                            <input type="text" value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} id='name' name='name' className='md:w-[194px]' />
+                                        </div>
+                                    </div>
+                                    <div className='flex flex-col'>
+                                        <label htmlFor="email">Email</label>
+                                        <input type="email" id='email' value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} name='email' className='md:w-[400px]' />
+                                    </div>
+                                    <div className='flex flex-col'>
+                                        <label htmlFor="message">Wtire to Us</label>
+                                        <textarea id='message' value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} name='message' className='md:w-[400px] h-[125px]' />
+                                    </div>
+                                    <Button variant='solid' isLoading={loading} color='primary' type='submit' className='font-semibold w-32 mx-auto'>Submit</Button>
+                                </form>
+                            </ModalBody>
+                        </>
+                    )}
+                </ModalContent>
             </Modal>
         </>
     );
 }
+
+

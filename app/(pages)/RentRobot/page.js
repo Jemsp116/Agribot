@@ -1,8 +1,20 @@
 "use client";
 import React, { useState } from "react";
+import Payment from "@/components/Payment";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 
 const RentRobot = () => {
   const [selectedRobot, setSelectedRobot] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+
+
+
+  const handleOpen = () => {
+    onOpen();
+  }
+
+
 
   const robotsAndDrones = [
     {
@@ -67,9 +79,6 @@ const RentRobot = () => {
     },
   ];
 
-  const toggleRobotInfo = (index) => {
-    setSelectedRobot(selectedRobot === index ? null : index);
-  };
 
   return (
     <div className="bg-white dark:bg-gray-900">
@@ -105,54 +114,56 @@ const RentRobot = () => {
                 <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
                   {item.description}
                 </p>
-                <button
-                  onClick={() => toggleRobotInfo(index)}
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg--700 fgreenocus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-green-700 dark:focus:ring-blue-800"
-                >
-                  Show Info
-                </button>
-                <button
-                  onClick={() => toggleRobotInfo(index)}
-                  className="ml-2 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-500 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                >
-                  Rent a Robot
-                </button>
+                <div className="flex gap-4">
+
+                  <>
+                    <div className="flex flex-wrap gap-3">
+
+                      <Button onPress={() => handleOpen()}>Learn More</Button>
+
+                    </div>
+                    <Modal
+                      size={'4xl'}
+                      isOpen={isOpen}
+                      onClose={onClose}
+                    >
+                      <ModalContent>
+                        {(onClose) => (
+                          <>
+                            <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+                            <ModalBody>
+                              <div>
+                                <Image 
+                                  
+                                />
+                                <div>
+                                  <h2></h2>
+                                  <p></p>
+                                  <h1></h1>
+                                  <button></button>
+                                </div>
+                              </div>
+                            </ModalBody>
+                            <ModalFooter>
+                              <Button color="danger" variant="light" onPress={onClose}>
+                                Close
+                              </Button>
+                              <Button color="primary" onPress={onClose}>
+                                Action
+                              </Button>
+                            </ModalFooter>
+                          </>
+                        )}
+                      </ModalContent>
+                    </Modal>
+                  </>
+                  <Payment existingName={"KANISHK"} existingEmail={"kanishkchaudhary2005@gmail.com"} existingAmount={200} btnText={'Rent a Robot'} />
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
-
-      {selectedRobot !== null && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white dark:bg-gray-800">
-            <div className="mt-3 text-center">
-              <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white">
-                {robotsAndDrones[selectedRobot].name}
-              </h3>
-              <div className="mt-2 px-7 py-3">
-                <h4 className="font-bold text-gray-900 dark:text-white">Features:</h4>
-                <p className="text-gray-700 dark:text-gray-300">{robotsAndDrones[selectedRobot].features}</p>
-                <h4 className="font-bold text-gray-900 dark:text-white mt-2">Price Point:</h4>
-                <p className="text-gray-700 dark:text-gray-300">{robotsAndDrones[selectedRobot].pricePoint}</p>
-                <h4 className="font-bold text-gray-900 dark:text-white mt-2">Rent Price:</h4>
-                <p className="text-gray-700 dark:text-gray-300">{robotsAndDrones[selectedRobot].rentPrice}</p>
-                <h4 className="font-bold text-gray-900 dark:text-white mt-2">Terms & Conditions:</h4>
-                <p className="text-gray-700 dark:text-gray-300">{robotsAndDrones[selectedRobot].terms}</p>
-              </div>
-              <div className="items-center px-4 py-3">
-                <button
-                  id="ok-btn"
-                  className="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                  onClick={() => setSelectedRobot(null)}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
