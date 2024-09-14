@@ -45,7 +45,7 @@ export default function About() {
 
     return (
         <>
-            <div className="relative isolate bg-[url('/back3.jpg')] bg-fixed overflow-hidden bg-gray-900 py-24 sm:py-32">
+            <div className="relative isolate bg-[url('/back3.jpg')] bg-fixed overflow-hidden bg-cover bg-gray-900 py-24 sm:py-32">
                 {/* ... (previous background divs remain unchanged) ... */}
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl lg:mx-0">

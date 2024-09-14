@@ -16,7 +16,7 @@ const HomePage = () => {
             <section className="dark:bg-gray-900 bg-white h-64 rounded-xl shadow-2xl mb-2 overflow-hidden">
               <div className="md:flex">
                 <div className="md:flex-shrink-0">
-                  <img className="h-64 w-full object-cover md:w-48" src="/robot_farm_img.jpg" alt="Agribot robot in field" />
+                  <img className="h-64 w-full object-cover md:w-48" src="/h-bg01.jpg" alt="Agribot robot in field" />
                 </div>
                 <div className="p-8">
                   <h3 className="mt-1 text-2xl font-semibold text-black dark:text-white">Revolutionizing Farming with Robotics</h3>
@@ -54,7 +54,7 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div className="md:flex-shrink-0">
-                  <img className="h-64 w-full object-cover md:w-48" src="/robot_agriculture.jpg" alt="Robotic farming equipment" />
+                  <img className="h-64 w-full object-cover md:w-48" src="/h-bg02.jpg" alt="Robotic farming equipment" />
                 </div>
               </div>
             </section>
@@ -65,21 +65,21 @@ const HomePage = () => {
           <div className="bg-white dark:bg-black p-6 rounded-lg shadow-md">
             <h3 className="text-xl text-black dark:text-white font-semibold mb-2">Automate Your Farm</h3>
             <p className="text-black dark:text-white mb-4">Boost productivity with cutting-edge robotic solutions.</p>
-            <Link href="/automation" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            <Link href="/RentRobot" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
               Explore Automation
             </Link>
           </div>
           <div className="bg-white dark:bg-black p-6 rounded-lg shadow-md">
             <h3 className="text-xl text-black dark:text-white font-semibold mb-2">Optimize Crop Management</h3>
             <p className="text-black dark:text-white mb-4">Maximize yields with precision robotic systems.</p>
-            <Link href="/crop-management" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            <Link href="/about-us" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
               Learn More
             </Link>
           </div>
           <div className="bg-white dark:bg-black p-6 rounded-lg shadow-md">
             <h3 className="text-xl text-black dark:text-white font-semibold mb-2">Sustainable Farming Solutions</h3>
             <p className="text-black dark:text-white mb-4">Discover eco-friendly robotics for sustainable agriculture.</p>
-            <Link href="/sustainability" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            <Link href="/about-us" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
               Learn More
             </Link>
           </div>
