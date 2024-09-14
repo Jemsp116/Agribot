@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Payment from "@/components/Payment";
 import {
   Modal,
@@ -10,12 +10,26 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import Image from "next/image";
 import RobotImage from "@/components/RobotImages";
+import axios from "axios";
 
 const RentRobot = () => {
-  const [selectedRobot, setSelectedRobot] = useState(null);
+  // const [selectedRobot, setSelectedRobot] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [robots, setRobots] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`/api/robots`).then((res) => {
+      setRobots(res.data);
+      setLoading(false);
+    })
+      .catch((error) => {
+        console.error("Error fetching robots:", error);
+        setLoading(false);
+      });
+  }, []);
 
   const handleOpen = () => {
     onOpen();
@@ -116,7 +130,7 @@ const RentRobot = () => {
           </p>
         </div>
         <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-          {robotsAndDrones.map((item, index) => (
+          {robots?.map((item, index) => (
             <div
               key={index}
               className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700"
@@ -124,7 +138,7 @@ const RentRobot = () => {
               <a href="#">
                 <img
                   className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
-                  src={item.image}
+                  src={item.images[0] || "https://via.placeholder.com/300"}
                   alt={`${item.name} Image`}
                 />
               </a>
@@ -144,73 +158,50 @@ const RentRobot = () => {
                       <Button onPress={() => handleOpen()}>Learn More</Button>
                     </div>
                     <Modal size={"4xl"} isOpen={isOpen} onClose={onClose}>
-  <ModalContent>
-    {(onClose) => {
-      const images = [
-        "/card_img_04.jpg",
-        "/card_img_02.jpg",
-        "/card_img_03.jpg",
-      ];
+                      <ModalContent>
+                        {(onClose) => {
 
-      return (
-        <>
-          <ModalHeader className="flex flex-col gap-1 text-2xl">
-            Modal Title
-          </ModalHeader>
-          <ModalBody className="overflow-y-auto" style={{ maxHeight: '500px' }}>
-            <div>
-              {/* Display all images in a row */}
-              <RobotImage images={images} />
+                          return (
+                            <>
+                              <ModalHeader className="flex flex-col gap-1 text-2xl">
+                                {item.name}
+                              </ModalHeader>
+                              <ModalBody className="overflow-y-auto" style={{ maxHeight: '500px' }}>
+                                <div>
+                                  {/* Display all images in a row */}
+                                  <RobotImage images={item.images} />
 
-              {/* Fixed Information */}
-              <div className="mt-4 flex flex-col gap-3">
-                <p className="text-sm font-semibold text-justify">
-                  All Images Displayed in a Row: The images array is mapped over,
-                  and each image is rendered simultaneously inside a div with flex
-                  to align them horizontally. The space-x-4 class adds space between
-                  the images for better visual separation. Removed Buttons for Image
-                  Navigation: The buttons to navigate between images nextImage and
-                  prevImage were removed, as the goal is to display all the images at
-                  once. All Images Displayed in a Row: The images array is mapped
-                  over, and each image is rendered simultaneously inside a div with
-                  flex to align them horizontally. The space-x-4 class adds space
-                  between the images for better visual separation. Remove is to
-                  display all the images at once.
-                </p>
-                
-                <h1 className="font-semibold">Key Feature: </h1>
-                <ul className="list-disc text-sm font-semibold text-justify ml-4">
-                  <li>All Images Displayed in a Row: The images array is mapped
-                  over, and eacneouslbetter visual separation. Remove is to
-                  display all the images at once.</li>
-                  <li>All Images Displayed in a Row: The images array is mapped
-                  over, and eacneouslbetter visual separation. Remove is to
-                  display all the images at once.</li>
-                  <li>All Images Displayed in a Row: The images array is mapped
-                  over, and eacneouslbetter visual separation. Remove is to
-                  display all the images at once.</li>
-                </ul>
-                <h1 className="font-semibold">Price: 900000</h1>
-              </div>
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              color="danger"
-              variant="light"
-              onPress={onClose}
-            >
-              Close
-            </Button>
-            <Button color="primary" onPress={onClose}>
-              Action
-            </Button>
-          </ModalFooter>
-        </>
-      );
-    }}
-  </ModalContent>
-</Modal>
+                                  {/* Fixed Information */}
+                                  <div className="mt-4 flex flex-col gap-3">
+                                    <p className="text-sm font-semibold text-justify">
+                                      {item.description}
+                                    </p>
+
+                                    <h1 className="font-semibold">Key Feature: </h1>
+                                    <ul className="list-disc text-sm font-semibold text-justify ml-4">
+                                      {item.features.map((feature, index) => (<li key={index}>{feature}</li>))}
+                                    </ul>
+                                    <h1 className="font-semibold">Price: {item.price}</h1>
+                                  </div>
+                                </div>
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button
+                                  color="danger"
+                                  variant="light"
+                                  onPress={onClose}
+                                >
+                                  Close
+                                </Button>
+                                <Button color="primary" onPress={onClose}>
+                                  Rent Now
+                                </Button>
+                              </ModalFooter>
+                            </>
+                          );
+                        }}
+                      </ModalContent>
+                    </Modal>
 
                   </>
                   <Payment
