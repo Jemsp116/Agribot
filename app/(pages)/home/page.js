@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from "recharts";
+import Carousel from "@/components/Carousel";
 
 const carouselData = [
   {
@@ -92,12 +93,12 @@ const HomeContent = () => {
 
   return (
     <div className="min-h-screen bg-white-300 dark:bg-gray-900 text-green-50">
-      <header className="py-6 px-6 bg-green-800 text-center">
+      {/* <header className="py-6 px-6 bg-green-800 text-center">
         <h1 className="text-6xl font-bold">AgriBot</h1>
-      </header>
+      </header> */}
 
       {/* Carousel - Increased height */}
-      <div className="relative w-[75vw] border-r-medium ml-28 mt-8 mb-12 h-[480px]">
+      {/* <div className="relative w-[75vw] border-r-medium ml-28 mt-8 mb-12 h-[480px]">
         <div className="overflow-hidden h-full">
           {carouselData.map((slide, index) => (
             <div
@@ -143,7 +144,9 @@ const HomeContent = () => {
         >
           <ChevronRight className="text-black dark:text-white w-6 h-6" />
         </button>
-      </div>
+      </div> */}
+
+      <Carousel />
 
       <main className="container mx-auto px-4">
         {/* Why AgriBot Section */}
