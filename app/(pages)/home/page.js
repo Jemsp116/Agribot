@@ -1,23 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from "recharts";
-import Carousel from "@/components/Carousel";
-
-const carouselData = [
-  {
-    image: "/card_img_04.jpg",
-    description: "AgriBot: Revolutionizing Agriculture with Cutting-Edge Robotics",
-  },
-  {
-    image: "/card_img_03.jpg",
-    description: "Increase Efficiency: Rent AgriBot for Your Farm Today",
-  },
-  {
-    image: "/card_img_02.jpg",
-    description: "Sustainable Farming: AgriBot Reduces Labor Costs and Increases Yield",
-  },
-];
+import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 const laborShortageData = [
   { year: 2018, shortage: 45 },
@@ -62,92 +45,10 @@ const serviceCards = [
 ];
 
 const HomeContent = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [activeCard, setActiveCard] = useState(null);
-  const [imagesLoaded, setImagesLoaded] = useState([]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % carouselData.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const preloadImages = async () => {
-      const loadPromises = carouselData.map((slide) => {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.src = slide.image;
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(false);
-        });
-      });
-
-      const results = await Promise.all(loadPromises);
-      setImagesLoaded(results);
-    };
-
-    preloadImages();
-  }, []);
 
   return (
     <div className="min-h-screen bg-white-300 dark:bg-gray-900 text-green-50">
-      {/* <header className="py-6 px-6 bg-green-800 text-center">
-        <h1 className="text-6xl font-bold">AgriBot</h1>
-      </header> */}
-
-      {/* Carousel - Increased height */}
-      {/* <div className="relative w-[75vw] border-r-medium ml-28 mt-8 mb-12 h-[480px]">
-        <div className="overflow-hidden h-full">
-          {carouselData.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${
-                index === currentSlide ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              {imagesLoaded[index] ? (
-                <img
-                  src={slide.image}
-                  alt={`Slide ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gray-800">
-                  <p className="text-xl text-gray-400">Loading...</p>
-                </div>
-              )}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-xl font-bold text-black dark:text-white text-center max-w-3xl px-4 text-shadow-md">
-                  {slide.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <button
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-green-500 p-3 rounded-full"
-          onClick={() =>
-            setCurrentSlide(
-              (prevSlide) => (prevSlide - 1 + carouselData.length) % carouselData.length
-            )
-          }
-        >
-          <ChevronLeft className="text-black dark:text-white w-6 h-6" />
-        </button>
-        <button
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-green-500 p-3 rounded-full"
-          onClick={() =>
-            setCurrentSlide((prevSlide) => (prevSlide + 1) % carouselData.length)
-          }
-        >
-          <ChevronRight className="text-black dark:text-white w-6 h-6" />
-        </button>
-      </div> */}
-
-      <Carousel />
-
       <main className="container mx-auto px-4">
         {/* Why AgriBot Section */}
         <section className="mb-16 text-center">
