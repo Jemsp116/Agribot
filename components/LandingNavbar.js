@@ -34,8 +34,8 @@ export default function LandingNavbar() {
 
             <NavbarContent justify="end">
                 <ThemeSwitch />
-                <Link className="bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-success" href="/login">Login</Link>
-                <Link className="bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-success" href="/register">Register</Link>
+                <Link className="bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-success" href="/api/auth/login">Login</Link>
+                <Link className="bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-success" href="/api/auth/login">Register</Link>
             </NavbarContent>
             <NavbarMenu>
 

@@ -7,7 +7,6 @@ import { ThemeSwitch } from "./theme-switch";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import AuthModal from "./AuthModal";
-import { signOut } from "next-auth/react";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,12 +73,12 @@ export default function Nav() {
                     {item.label}
                   </Link>
                 ))}
-                <button 
+                <Link 
                   className="px-4 py-2 mx-3 mt-3 rounded-md text-white bg-green-500 cursor-pointer"
-                  onClick={() => signOut()}
+                  href="/api/auth/logout"
                 >
                   Logout
-                </button>
+                </Link>
               </div>
             )}
           </div>

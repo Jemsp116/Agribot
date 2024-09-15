@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 const laborShortageData = [
@@ -103,7 +103,6 @@ const HomeContent = () => {
         </button>
       </div> */}
 
-      <Carousel />
 
       <main className="container mx-auto px-4">
         {/* Why AgriBot Section */}

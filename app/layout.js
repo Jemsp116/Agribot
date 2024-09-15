@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Providers from "@/providers/Providers";
+import { UserProvider } from "@auth0/nextjs-auth0/client"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,9 +25,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          {children}
-        </Providers>
+        <UserProvider>
+          <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
+            {children}
+          </Providers>
+        </UserProvider>
       </body>
     </html>
   );

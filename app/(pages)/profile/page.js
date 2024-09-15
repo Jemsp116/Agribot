@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useUser } from '@/context/UserContext';
 import { useSession } from 'next-auth/react';
 import UserProfile from '@/components/UserProfile';
-import RecyclerProfile from '@/components/RecyclerProfile';
-import RecyclerForm from '@/components/RecyclerForm';
 
 const ProfilePage = () => {
   const { data: session } = useSession();
@@ -41,8 +39,6 @@ const ProfilePage = () => {
             {session?.user?.role === "user" && <UserProfile />}
             {session?.user?.role === "recycler" && (
               <>
-                <RecyclerProfile />
-                <RecyclerForm />
               </>
             )}
 
