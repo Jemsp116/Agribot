@@ -1,6 +1,6 @@
 export const carouselItems = [
     {
-        "title": "आत्मवत् सर्वभूतेषु",
+        "title": "Robots",
         "topic": "Welcome to the jungle",
         "description": "An initiative to save the sloth bears of India.",
         "img": "/carousel/slothbear1.jpg",
@@ -10,7 +10,7 @@ export const carouselItems = [
         // "href2": "/subscribe",
     },
     {
-        "title": "आत्मवत् सर्वभूतेषु",
+        "title": "Drones",
         "topic": "Explore the world",
         "description": "An initiative to save the sloth bears of India.",
         "img": "/carousel/slothbear2.jpg",
@@ -20,7 +20,7 @@ export const carouselItems = [
         // "href2": "/explore",
     },
     {
-        "title": "आत्मवत् सर्वभूतेषु",
+        "title": "Bots",
         "topic": "Explore the world",
         "description": "An initiative to save the sloth bears of India.",
         "img": "/carousel/slothbear3.jpg",
@@ -28,7 +28,7 @@ export const carouselItems = [
         "href1": "https://wcb-research-foundation.danamojo.org/dm/sloth-bear-conservation-project-8650",
     },   
     {
-        "title": "आत्मवत् सर्वभूतेषु",
+        "title": "Agribot",
         "topic": "Explore the world",
         "description": "An initiative to save the sloth bears of India.",
         "img": "/carousel/slothbear4.jpg",
