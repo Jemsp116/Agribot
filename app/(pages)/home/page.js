@@ -48,6 +48,7 @@ const HomeContent = () => {
   const [activeCard, setActiveCard] = useState(null);
 
   return (
+    <>
     <div className="min-h-screen bg-white-300 dark:bg-gray-900 text-green-50">
       {/* <header className="py-6 px-6 bg-green-800 text-center">
         <h1 className="text-6xl font-bold">AgriBot</h1>
