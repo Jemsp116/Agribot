@@ -1,0 +1,47 @@
+"use client";
+import React, { useState } from "react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import { ThemeSwitch } from "./theme-switch";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import Payment from "./Payment";
+
+export default function LandingNavbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
+
+
+    return (
+        <Navbar maxWidth="xl" position="sticky" isBlurred={false} onMenuOpenChange={setIsMenuOpen}>
+            <NavbarContent justify="start">
+                <NavbarBrand>
+                    <Link className="flex justify-center items-center" href="/">
+                        <Image
+                            src={'/logo.png'}
+                            width={36}
+                            height={36}
+                            className="h-8 w-8 mr-4"
+                            alt="logo"
+                        />
+                        <p className="font-bold text-inherit">AgriBot</p>
+                    </Link>
+                </NavbarBrand>
+            </NavbarContent>
+            <NavbarContent className="hidden sm:flex gap-4" justify="center">
+
+            </NavbarContent>
+
+            <NavbarContent justify="end">
+                <ThemeSwitch />
+                <Link className="bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-success" href="/api/auth/login">Login</Link>
+                <Link className="bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-success" href="/api/auth/login">Register</Link>
+            </NavbarContent>
+            <NavbarMenu>
+
+                <NavbarMenuItem key="auth-modal">
+                </NavbarMenuItem>
+            </NavbarMenu>
+        </Navbar>
+    );
+}

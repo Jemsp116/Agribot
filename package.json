@@ -1,0 +1,43 @@
+{
+  "name": "wcb-research-admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth0/nextjs-auth0": "^3.5.0",
+    "@aws-sdk/client-s3": "^3.620.0",
+    "@nextui-org/react": "^2.4.7",
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
+    "embla-carousel-autoplay": "^8.3.0",
+    "embla-carousel-react": "^8.3.0",
+    "framer-motion": "^11.5.4",
+    "lucide-react": "^0.441.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.4",
+    "next": "14.2.5",
+    "next-auth": "^4.24.7",
+    "next-themes": "^0.3.0",
+    "razorpay": "^2.9.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "react-icons": "^5.2.1",
+    "react-sortablejs": "^6.1.4",
+    "react-spinners": "^0.14.1",
+    "recharts": "^2.12.7",
+    "sharp": "^0.33.4",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}
