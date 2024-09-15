@@ -23,4 +23,8 @@ Agribot provides *robot and drone services* to farmers through a *"Robot-as-a-Se
 
 ```bash
 git clone https://github.com/yourusername/agribot.git
+<<<<<<< HEAD
 cd agribot
+=======
+cd agribot
+>>>>>>> a738fd531b93e25e4f1bf56da658fede78e806ce

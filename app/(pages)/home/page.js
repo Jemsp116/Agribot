@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 const laborShortageData = [
@@ -48,7 +48,62 @@ const HomeContent = () => {
   const [activeCard, setActiveCard] = useState(null);
 
   return (
+    <>
     <div className="min-h-screen bg-white-300 dark:bg-gray-900 text-green-50">
+      {/* <header className="py-6 px-6 bg-green-800 text-center">
+        <h1 className="text-6xl font-bold">AgriBot</h1>
+      </header> */}
+
+      {/* Carousel - Increased height */}
+      {/* <div className="relative w-[75vw] border-r-medium ml-28 mt-8 mb-12 h-[480px]">
+        <div className="overflow-hidden h-full">
+          {carouselData.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {imagesLoaded[index] ? (
+                <img
+                  src={slide.image}
+                  alt={`Slide ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gray-800">
+                  <p className="text-xl text-gray-400">Loading...</p>
+                </div>
+              )}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <p className="text-xl font-bold text-black dark:text-white text-center max-w-3xl px-4 text-shadow-md">
+                  {slide.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-green-500 p-3 rounded-full"
+          onClick={() =>
+            setCurrentSlide(
+              (prevSlide) => (prevSlide - 1 + carouselData.length) % carouselData.length
+            )
+          }
+        >
+          <ChevronLeft className="text-black dark:text-white w-6 h-6" />
+        </button>
+        <button
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-green-500 p-3 rounded-full"
+          onClick={() =>
+            setCurrentSlide((prevSlide) => (prevSlide + 1) % carouselData.length)
+          }
+        >
+          <ChevronRight className="text-black dark:text-white w-6 h-6" />
+        </button>
+      </div> */}
+
+
       <main className="container mx-auto px-4">
         {/* Why AgriBot Section */}
         <section className="mb-16 text-center">
@@ -80,53 +135,53 @@ const HomeContent = () => {
             overcome this challenge and improve their productivity.
           </p>
 
-          {/* Productivity Comparison Chart */}
-          <h3 className="text-2xl font-bold mb-6 text-green-400">
-            Human vs Robot Productivity and Efficiency
-          </h3>
-          <div className="h-64 w-full md:w-3/4 lg:w-2/3 mx-auto">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={productivityData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="human" stroke="#82ca9d" name="Human Productivity" />
-                <Line type="monotone" dataKey="robot" stroke="#8884d8" name="Robot Productivity" />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-          <p className="mt-6 max-w-3xl mx-auto text-black dark:text-white font-semibold">
-            This chart demonstrates the increasing efficiency and productivity of robotic
-            solutions compared to human labor in agriculture over the years.
-          </p>
-        </section>
-
-        {/* Interactive Service Cards */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {serviceCards.map((card, index) => (
-            <div
-              key={index}
-              className={`bg-green-800 rounded-lg p-6 shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer ${
-                activeCard === index ? "ring-4 ring-green-400" : ""
-              }`}
-              onClick={() => setActiveCard(index === activeCard ? null : index)}
-            >
-              <div className="text-5xl mb-4">{card.icon}</div>
-              <h3 className="text-2xl font-semibold mb-3">{card.title}</h3>
-              <p className="mb-4">{card.description}</p>
-              {activeCard === index && (
-                <div className="mt-4 text-green-300 transition-all duration-300 ease-in-out">
-                  <p className="font-semibold mb-2">Learn More:</p>
-                  <p>{card.details}</p>
-                </div>
-              )}
+            {/* Productivity Comparison Chart */}
+            <h3 className="text-2xl font-bold mb-6 text-green-400">
+              Human vs Robot Productivity and Efficiency
+            </h3>
+            <div className="h-64 w-full md:w-3/4 lg:w-2/3 mx-auto">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={productivityData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="year" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line type="monotone" dataKey="human" stroke="#82ca9d" name="Human Productivity" />
+                  <Line type="monotone" dataKey="robot" stroke="#8884d8" name="Robot Productivity" />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
-          ))}
-        </section>
-      </main>
-    </div>
+            <p className="mt-6 max-w-3xl mx-auto text-black dark:text-white font-semibold">
+              This chart demonstrates the increasing efficiency and productivity of robotic
+              solutions compared to human labor in agriculture over the years.
+            </p>
+          </section>
+
+          {/* Interactive Service Cards */}
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {serviceCards.map((card, index) => (
+              <div
+                key={index}
+                className={`bg-green-800 rounded-lg p-6 shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer ${activeCard === index ? "ring-4 ring-green-400" : ""
+                  }`}
+                onClick={() => setActiveCard(index === activeCard ? null : index)}
+              >
+                <div className="text-5xl mb-4">{card.icon}</div>
+                <h3 className="text-2xl font-semibold mb-3">{card.title}</h3>
+                <p className="mb-4">{card.description}</p>
+                {activeCard === index && (
+                  <div className="mt-4 text-green-300 transition-all duration-300 ease-in-out">
+                    <p className="font-semibold mb-2">Learn More:</p>
+                    <p>{card.details}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </section>
+        </main>
+      </div>
+    </>
   );
 };
 
